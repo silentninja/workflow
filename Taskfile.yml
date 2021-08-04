@@ -5,20 +5,25 @@ tasks:
   # sdk
   #
 
+  sdk:test:
+    dir: sdk/tests
+    cmds:
+      - api exec "tox"
+
   sdk:publish:
     desc: Publish optic-python-sdk
     dir: workflow_test
     cmds:
       - task: poetry:publish
         vars:
-          PROJECT_DIR: sdk
+          PROJECT_DIR: workflow_test
   sdk:publish:test:
     desc: Publish optic-python-sdk to test pypi
     dir: workflow_test
     cmds:
       - task: poetry:publish:test
         vars:
-          PROJECT_DIR: sdk
+          PROJECT_DIR: workflow_test
   test-all:
     cmds:
       - task: sdk:test
